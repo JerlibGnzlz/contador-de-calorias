@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid"
 import { ChangeEvent, Dispatch, useState } from "react"
 import { categories } from "../data/category"
 import { actividad } from "../types"
@@ -6,7 +7,8 @@ import { ActivityAction } from '../reducers/avtivity-reducers';
 type FormProps = {
     dispatch: Dispatch<ActivityAction>
 }
-const initialState = {
+const initialState: actividad = {
+    id: uuidv4(),
     categoria: 1,
     name: "",
     calorias: 0
