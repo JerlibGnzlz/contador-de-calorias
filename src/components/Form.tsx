@@ -39,7 +39,11 @@ export const Form = ({ dispatch }: FormProps) => {
 
         dispatch({ type: "save=activity", payload: { newActivity: actividad } })
 
-        setActividad(initialState)
+        setActividad({
+            ...initialState,
+            id: uuidv4()
+
+        })
     }
 
     return (
