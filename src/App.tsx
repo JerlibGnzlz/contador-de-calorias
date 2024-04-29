@@ -1,6 +1,7 @@
 import { useReducer } from "react"
 import { Form } from "./components/Form"
 import { activityReducer, initialState } from "./reducers/avtivity-reducers"
+import { ActivityList } from "./components/ActivityList"
 
 function App() {
 
@@ -13,15 +14,24 @@ function App() {
             Contador de Calorias
           </h1>
         </div>
+      </header >
 
-        <section className="bg-lime-500 py-2 px-5">
-          <div className="max-w-4xl mx-auto">
-            <Form
-              dispatch={dispatch}
-            />
-          </div>
-        </section>
-      </header>
+      <section className="bg-lime-500 py-2 px-5">
+        <div className="max-w-4xl mx-auto">
+          <Form
+            dispatch={dispatch}
+          />
+        </div>
+      </section>
+
+      <section className="p-10 mx-auto max-w-4xl">
+        <ActivityList
+          actividad={state.activities}
+        />
+      </section>
+
+
+
 
     </>
   )
