@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { categories } from '../data/category';
 import { actividad } from '../types';
+import { PencilSquareIcon } from "@heroicons/react/24/outline"
 
 
 type ActivityListProps = {
@@ -33,8 +34,13 @@ export const ActivityList = ({ actividad }: ActivityListProps) => {
             </p>
           </div>
 
-          <div>
+          <div className='flex gap-5 items-center'>
+            <button>
 
+              <PencilSquareIcon
+                className='w-8 h-8 text-gray-800'
+              />
+            </button>
           </div>
         </div >
 
