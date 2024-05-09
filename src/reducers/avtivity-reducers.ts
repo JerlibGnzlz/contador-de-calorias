@@ -1,15 +1,16 @@
-import { actividad } from "../types/index";
+import { actividad } from '../types/index';
 
-export type ActivityAction = {
-  type: "save=activity";
-  payload: { newActivity: actividad };
-};
+export type ActivityAction =
+  { type: "save=activity"; payload: { newActivity: actividad } } |
+  { type: "set=activeId"; payload: { id: actividad["id"] } };
 
 type ActivityState = {
   activities: actividad[];
+  activeId: actividad["id"]
 };
 export const initialState: ActivityState = {
   activities: [],
+  activeId: ""
 };
 
 export const activityReducer = (
@@ -23,6 +24,12 @@ export const activityReducer = (
       activities: [...state.activities, action.payload.newActivity],
     };
   }
+  if (action.type === "set=activeId") {
 
+    return {
+      ...state,
+      activeId: action.payload.id
+    }
+  }
   return state;
 };
