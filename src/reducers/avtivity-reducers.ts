@@ -4,7 +4,7 @@ export type ActivityAction =
   { type: "save=activity"; payload: { newActivity: actividad } } |
   { type: "set=activeId"; payload: { id: actividad["id"] } };
 
-type ActivityState = {
+export type ActivityState = {
   activities: actividad[];
   activeId: actividad["id"]
 };
