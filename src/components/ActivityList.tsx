@@ -23,7 +23,9 @@ export const ActivityList = ({ actividad, dispatch }: ActivityListProps) => {
         Comida y Actividades
       </h2>
 
-      {actividad.map((actividad) => (
+		  {actividad.length===0 ? <p className="text-center">No hay actividades aun...</p>:
+
+			  actividad.map((actividad) => (
         <div
           key={actividad.id}
           className="px-5 py-10 bg-white mt-5 flex justify-between">
