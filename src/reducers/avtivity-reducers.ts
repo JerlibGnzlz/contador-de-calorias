@@ -3,8 +3,8 @@ import { actividad } from "../types/index";
 export type ActivityAction =
   | { type: "save=activity"; payload: { newActivity: actividad } }
   | { type: "set=activeId"; payload: { id: actividad["id"] } }
-  | { type: "delete-activity"; payload: { id: actividad["id"] } };
-
+  | { type: "delete-activity"; payload: { id: actividad["id"] } }
+| { type: "reset-activity" };
 export type ActivityState = {
   activities: actividad[];
   activeId: actividad["id"];
@@ -53,6 +53,15 @@ export const activityReducer = (
 		activities: state.activities.filter(actividad=> actividad.id !== action.payload.id)
 	};
   }
+
+	if (action.type === "reset-activity")
+	{
+		return {
+			activities: [],
+			activeId: "",
+
+		};
+	}
 
   return state;
 };

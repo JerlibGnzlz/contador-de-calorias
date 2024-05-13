@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useMemo, useReducer } from "react";
 import { Form } from "./components/Form";
 import { activityReducer, initialState } from "./reducers/avtivity-reducers";
 import { ActivityList } from "./components/ActivityList";
@@ -10,6 +10,11 @@ function App() {
 		localStorage.setItem("actividades", JSON.stringify(state.activities));
 	}, [state.activities]);
 
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const resetApp = () =>
+    useMemo(() => state.activities.length , [state.activities]);
+
 	return (
 		<>
 			<header className="bg-lime-600 py-3">
@@ -17,6 +22,11 @@ function App() {
 					<h1 className="uppercase font-bold text-lg text-center text-white">
 						Contador de Calorias
 					</h1>
+
+					<button className="bg-gray-800 hover:bg-gray-900 font-bold text-white  uppercase text-sm cursor-pointer p-2 rounded-lg disabled:opacity-10"
+						disabled={!resetApp()}
+					onClick={()=>dispatch({type:"reset-activity"})}
+					>Reniciar App</button>
 				</div>
 			</header>
 
